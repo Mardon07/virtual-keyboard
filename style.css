@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.2s linear;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -7,13 +19,86 @@
   align-items: center;
   justify-content: center;
 }
+
 .row {
-  width: 800px;
+  width: 1008px;
   display: flex;
   justify-content: space-between;
-  background: #c2bfbf;
+  margin-bottom: 5px;
 }
-.row input {
-  font-size: 32px;
-  padding: 10px;
+
+input {
+  width: 60px;
+  height: 60px;
+  background: #052850;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input:hover {
+  background: #08468d;
+}
+.input-area {
+  width: 1008px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  padding: 0;
+  height: 100px;
+}
+.key-black {
+  background: #090b1b;
+}
+.key-backspace {
+  text-transform: none;
+  background: #090b1b;
+  width: 120px;
+}
+.key-tab {
+  text-transform: none;
+  background: #090b1b;
+  width: 90px;
+}
+.key-del {
+  background: #090b1b;
+}
+.key-capslock {
+  text-transform: none;
+  width: 120px;
+  background: #090b1b;
+}
+.key-enter {
+  width: 120px;
+  background: #090b1b;
+}
+.key-shift:first-child {
+  text-transform: none;
+  width: 120px;
+  background: #090b1b;
+}
+.key-shift:last-child {
+  text-transform: none;
+  background: #090b1b;
+}
+.key-shift:first-child:hover,
+.key-shift:last-child:hover {
+  background: #08468d;
+}
+.key-ctrl {
+  text-transform: none;
+  background: #090b1b;
+  width: 90px;
+}
+.key-down {
+  background: #090b1b;
+}
+
+.row-last-input {
+  background: #090b1b;
+}
+.key-space {
+  width: 405px;
+  background: #052850;
 }

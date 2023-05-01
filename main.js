@@ -238,7 +238,7 @@ const keysSpace = [
     letter: "Alt"
   },
   {
-    letter: "                     "
+    letter: " "
   },
   {
     letter: "Alt"
@@ -257,6 +257,13 @@ const keysSpace = [
   }
 ];
 
+const inputArea = document.createElement("textarea");
+const row0 = document.createElement("div");
+row0.className = "row1";
+inputArea.className = "input-area";
+inputArea.type = "textaria";
+row0.append(inputArea);
+container.prepend(row0);
 function one() {
   const row = document.createElement("div");
   row.className = "row";
@@ -265,6 +272,12 @@ function one() {
     input.className = "input";
     input.type = "button";
     input.value = i.number;
+    if (i.number === "`") {
+      input.classList.add("key-black");
+    }
+    if (i.number === "Backspace") {
+      input.classList.add("key-backspace");
+    }
     row.append(input);
     container.append(row);
   }
@@ -276,6 +289,12 @@ function one() {
     input.className = "input";
     input.type = "button";
     input.value = i.letterEn;
+    if (i.letterEn === "Tab") {
+      input.classList.add("key-tab");
+    }
+    if (i.letterEn === "DEL") {
+      input.classList.add("key-del");
+    }
     row2.append(input);
     container.append(row2);
   }
@@ -286,6 +305,12 @@ function one() {
     input.className = "input";
     input.type = "button";
     input.value = i.letterEn;
+    if (i.letterEn === "Caps Lock") {
+      input.classList.add("key-capslock");
+    }
+    if (i.letterEn === "ENTER") {
+      input.classList.add("key-enter");
+    }
     row3.append(input);
     container.append(row3);
   }
@@ -296,6 +321,12 @@ function one() {
     input.className = "input";
     input.type = "button";
     input.value = i.letterEn;
+    if (i.letterEn === "Shift") {
+      input.classList.add("key-shift");
+    }
+    if (i.letterEn === "↑") {
+      input.classList.add("key-down");
+    }
     row4.append(input);
     container.append(row4);
   }
@@ -303,12 +334,25 @@ function one() {
   row5.className = "row";
   for (const i of keysSpace) {
     const input = document.createElement("input");
-    input.className = "input";
+    input.className = "input row-last-input";
     input.type = "button";
     input.value = i.letter;
+    if (i.letter === "Ctrl") {
+      input.classList.add("key-ctrl");
+    }
+    if (i.letter === " ") {
+      input.classList.add("key-space");
+    }
     row5.append(input);
     container.append(row5);
   }
 }
 
 one();
+const keys = document.querySelectorAll("input");
+keys.forEach((k) => {
+  k.addEventListener("click", (e) => {
+    inputArea.textContent += e.target.value;
+    console.log(e.target.value);
+  });
+});
