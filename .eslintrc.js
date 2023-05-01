@@ -11,6 +11,14 @@ module.exports = {
   },
   rules: {
     semi: ["error", "always"],
-    quotes: ["error", "double"]
+    quotes: ["error", "double"],
+    "space-before-function-paren": [
+      "error",
+      {
+        anonymous: "always",
+        named: "never",
+        asyncArrow: "always"
+      }
+    ]
   }
 };
