@@ -7,6 +7,7 @@
 }
 body {
   font-family: "Montserrat", sans-serif;
+  font-weight: 700;
   transition: all 0.2s linear;
 }
 
@@ -25,23 +26,39 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
-}
-
-input {
-  width: 60px;
-  height: 60px;
-  background: #052850;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
+}
+.row div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 5px;
   cursor: pointer;
 }
-input:hover {
+
+.key {
+  width: 60px;
+  height: 60px;
+  background: #052850;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 444;
+}
+.key:hover {
   background: #08468d;
 }
-.input-area {
+.key:active {
+  background: #3d6088;
+}
+
+.key-area {
   width: 1008px;
   margin-bottom: 30px;
   font-size: 16px;
@@ -52,20 +69,19 @@ input:hover {
   background: #090b1b;
 }
 .key-backspace {
-  text-transform: none;
   background: #090b1b;
   width: 120px;
 }
 .key-tab {
-  text-transform: none;
   background: #090b1b;
   width: 90px;
 }
 .key-del {
   background: #090b1b;
+  width: 60px;
+  height: 60px;
 }
 .key-capslock {
-  text-transform: none;
   width: 120px;
   background: #090b1b;
 }
@@ -73,32 +89,67 @@ input:hover {
   width: 120px;
   background: #090b1b;
 }
-.key-shift:first-child {
-  text-transform: none;
+.key-shift {
   width: 120px;
   background: #090b1b;
 }
-.key-shift:last-child {
-  text-transform: none;
+.key-shift-right {
   background: #090b1b;
+  width: 60px;
+  height: 60px;
 }
 .key-shift:first-child:hover,
-.key-shift:last-child:hover {
+.key-shift-right:hover {
   background: #08468d;
 }
 .key-ctrl {
-  text-transform: none;
   background: #090b1b;
   width: 90px;
+}
+.key-ctrl:hover {
+  background: #08468d;
 }
 .key-down {
   background: #090b1b;
 }
 
-.row-last-input {
+.row-last-key {
   background: #090b1b;
 }
 .key-space {
   width: 405px;
   background: #052850;
+}
+.span-number {
+  position: relative;
+  z-index: 555;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.span-number .active {
+  z-index: 0;
+}
+
+.span-row1 {
+  position: absolute;
+  top: 0;
+  padding-left: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 444;
+  opacity: 0.5;
+}
+
+.code {
+  background: #2339df;
+}
+.key-shift .code {
+  background: #2339df;
+}
+.key-shift-right .code {
+  background: #2339df;
 }

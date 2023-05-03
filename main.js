@@ -1,5 +1,4 @@
 const body = document.querySelector("body");
-
 const container = document.createElement("div");
 container.className = "container";
 body.prepend(container);
@@ -62,7 +61,8 @@ const keysNumber = [
 ];
 const keysQwerty = [
   {
-    letterEn: "Tab"
+    letterEn: "Tab",
+    letterRu: "Tab"
   },
   {
     letterEn: "q",
@@ -117,13 +117,15 @@ const keysQwerty = [
     letterRu: "/"
   },
   {
-    letterEn: "DEL"
+    letterEn: "DEL",
+    letterRu: "DEL"
   }
 ];
 
 const keysAsdf = [
   {
-    letterEn: "Caps Lock"
+    letterEn: "CapsLock",
+    letterRu: "CapsLock"
   },
   {
     letterEn: "a",
@@ -170,12 +172,14 @@ const keysAsdf = [
     letterRu: "э"
   },
   {
-    letterEn: "ENTER"
+    letterEn: "Enter",
+    letterRu: "Enter"
   }
 ];
 const keysZxcv = [
   {
-    letterEn: "Shift"
+    letterEn: "Shift",
+    letterRu: "Shift"
   },
   {
     letterEn: "\\"
@@ -224,7 +228,8 @@ const keysZxcv = [
     letterEn: "↑"
   },
   {
-    letterEn: "Shift"
+    letterEn: "SHIFT",
+    letterRu: "SHIFT"
   }
 ];
 const keysSpace = [
@@ -238,13 +243,13 @@ const keysSpace = [
     letter: "Alt"
   },
   {
-    letter: " "
+    letter: "Space"
   },
   {
-    letter: "Alt"
+    letter: "ALT"
   },
   {
-    letter: "Ctrl"
+    letter: "CtrL"
   },
   {
     letter: "←"
@@ -257,102 +262,320 @@ const keysSpace = [
   }
 ];
 
-const inputArea = document.createElement("textarea");
+const keyArea = document.createElement("textarea");
 const row0 = document.createElement("div");
 row0.className = "row1";
-inputArea.className = "input-area";
-inputArea.type = "textaria";
-row0.append(inputArea);
+keyArea.className = "key-area";
+// keyArea.type = "textarea";
+row0.append(keyArea);
 container.prepend(row0);
+
 function one() {
   const row = document.createElement("div");
   row.className = "row";
   for (const i of keysNumber) {
-    const input = document.createElement("input");
-    input.className = "input";
-    input.type = "button";
-    input.value = i.number;
+    const key = document.createElement("div");
+    const span = document.createElement("span");
+    const span2 = document.createElement("span");
+    span2.className = "span-number";
+    span.classList.add("span-row1");
+    span.textContent = i.signs;
+    key.className = "key";
+
+    span2.textContent = i.number;
+    key.append(span2);
+    key.append(span);
     if (i.number === "`") {
-      input.classList.add("key-black");
+      key.classList.add("key-black");
     }
     if (i.number === "Backspace") {
-      input.classList.add("key-backspace");
+      span.remove();
+      span2.remove();
+      key.append(i.number);
+      key.classList.add("key-backspace");
     }
-    row.append(input);
+    row.append(key);
     container.append(row);
   }
 
   const row2 = document.createElement("div");
   row2.className = "row";
   for (const i of keysQwerty) {
-    const input = document.createElement("input");
-    input.className = "input";
-    input.type = "button";
-    input.value = i.letterEn;
+    const key = document.createElement("div");
+    key.className = "key";
+    key.textContent = i.letterEn;
+
     if (i.letterEn === "Tab") {
-      input.classList.add("key-tab");
+      key.classList.add("key-tab");
     }
     if (i.letterEn === "DEL") {
-      input.classList.add("key-del");
+      key.classList.add("key-del");
     }
-    row2.append(input);
+    row2.append(key);
     container.append(row2);
   }
   const row3 = document.createElement("div");
   row3.className = "row";
   for (const i of keysAsdf) {
-    const input = document.createElement("input");
-    input.className = "input";
-    input.type = "button";
-    input.value = i.letterEn;
-    if (i.letterEn === "Caps Lock") {
-      input.classList.add("key-capslock");
+    const key = document.createElement("div");
+    key.className = "key";
+    key.textContent = i.letterEn;
+    if (i.letterEn === "CapsLock") {
+      key.classList.add("key-capslock");
     }
-    if (i.letterEn === "ENTER") {
-      input.classList.add("key-enter");
+    if (i.letterEn === "Enter") {
+      key.classList.add("key-enter");
     }
-    row3.append(input);
+    row3.append(key);
     container.append(row3);
   }
   const row4 = document.createElement("div");
   row4.className = "row";
   for (const i of keysZxcv) {
-    const input = document.createElement("input");
-    input.className = "input";
-    input.type = "button";
-    input.value = i.letterEn;
+    const key = document.createElement("div");
+    key.className = "key";
+    key.textContent = i.letterEn;
     if (i.letterEn === "Shift") {
-      input.classList.add("key-shift");
+      key.classList.add("key-shift");
+    }
+    if (i.letterEn === "SHIFT") {
+      key.classList.add("key-shift-right");
     }
     if (i.letterEn === "↑") {
-      input.classList.add("key-down");
+      key.classList.add("key-down");
     }
-    row4.append(input);
+    row4.append(key);
     container.append(row4);
   }
   const row5 = document.createElement("div");
   row5.className = "row";
   for (const i of keysSpace) {
-    const input = document.createElement("input");
-    input.className = "input row-last-input";
-    input.type = "button";
-    input.value = i.letter;
+    const key = document.createElement("div");
+    key.className = "key row-last-key";
+    key.textContent = i.letter;
     if (i.letter === "Ctrl") {
-      input.classList.add("key-ctrl");
+      key.classList.add("key-ctrl");
     }
-    if (i.letter === " ") {
-      input.classList.add("key-space");
+    if (i.letter === "Alt") {
+      key.classList.add("key-alt");
     }
-    row5.append(input);
+    if (i.letter === "CtrL") {
+      key.classList.add("key-ctrl");
+    }
+    if (i.letter === "Space") {
+      key.classList.add("key-space");
+    }
+    row5.append(key);
     container.append(row5);
   }
 }
-
 one();
-const keys = document.querySelectorAll("input");
+
+const keys = document.querySelectorAll(".key");
+const divs = document.querySelectorAll("div");
+
 keys.forEach((k) => {
   k.addEventListener("click", (e) => {
-    inputArea.textContent += e.target.value;
-    console.log(e.target.value);
+    if (e.target.textContent === "Shift" || e.target.textContent === "SHIFT") {
+      keyArea.value += "";
+    }
+    if (e.target.textContent === "Space") {
+      keyArea.value += " ";
+    }
+    if (e.target.textContent === "Tab") {
+      keyArea.value += "\u0009";
+    }
+    if (e.target.textContent === "Backspace") {
+      keyArea.value = keyArea.value.slice(0, -1);
+    }
+
+    if (e.target.textContent.length <= 2) {
+      keyArea.value += e.target.textContent;
+    }
   });
+});
+const span2 = document.querySelectorAll(".span-row1");
+const spanNumber = document.querySelectorAll(".span-number");
+
+divs.forEach((d) => {
+  d.addEventListener("click", (e) => {
+    if (e.target.textContent === "Shift" || e.target.textContent === "SHIFT") {
+      if (
+        e.target.className === "key key-shift active" ||
+        e.target.className === "key key-shift-right active"
+      ) {
+        for (const s of span2) {
+          s.style.zIndex = 444;
+          s.style.opacity = 0.5;
+        }
+        for (const n of spanNumber) {
+          n.style.opacity = 1;
+        }
+
+        e.target.classList.remove("active");
+      } else {
+        e.target.classList.add("active");
+
+        for (const s of span2) {
+          s.style.zIndex = 666;
+          s.style.opacity = 1;
+        }
+        for (const n of spanNumber) {
+          n.style.opacity = 0.5;
+        }
+      }
+    }
+    if (e.target.textContent === "Enter") {
+      keyArea.value += "\n";
+    }
+    if (e.target.className === "key key-capslock") {
+      for (let k = 0; k < keys.length; k++) {
+        if (
+          k > 14 &&
+          k !== 28 &&
+          k !== 29 &&
+          k !== 41 &&
+          k !== 42 &&
+          k !== 29 &&
+          k <= 54
+        ) {
+          keys[k].textContent = keys[k].textContent.toLowerCase();
+        }
+      }
+    }
+    if (e.target.className === "key key-capslock active") {
+      for (let k = 0; k < keys.length; k++) {
+        if (
+          k > 14 &&
+          k !== 28 &&
+          k !== 29 &&
+          k !== 41 &&
+          k !== 42 &&
+          k !== 29 &&
+          k <= 54
+        ) {
+          keys[k].textContent = keys[k].textContent.toUpperCase();
+        }
+      }
+    }
+  });
+});
+const capslock = document.querySelector(".key-capslock");
+capslock.addEventListener("click", (e) => {
+  if (e.target.className === "key key-capslock active") {
+    e.target.classList.remove("active");
+  } else {
+    e.target.classList.add("active");
+  }
+});
+const numbers = document.querySelectorAll(".span-number");
+document.addEventListener("keydown", (k) => {
+  for (const i of divs) {
+    console.log(k.code);
+    if (k.code === `Key${i.textContent.toUpperCase()}`) {
+      i.classList.add("code");
+    }
+    if (k.code === i.textContent) {
+      i.classList.add("code");
+    }
+    if (k.code === "ShiftLeft" && i.textContent === "Shift") {
+      i.classList.add("code");
+    }
+    if (k.code === "ShiftRight" && i.textContent === "SHIFT") {
+      i.classList.add("code");
+    }
+    if (k.code === "ControlLeft" && i.textContent === "Ctrl") {
+      i.classList.add("code");
+    }
+    if (k.code === "ControlRight" && i.textContent === "CtrL") {
+      i.classList.add("code");
+    }
+    if (k.code === "MetaLeft" && i.textContent === "Win") {
+      i.classList.add("code");
+    }
+    if (k.code === "AltLeft" && i.textContent === "Alt") {
+      i.classList.add("code");
+    }
+    if (k.code === "AltRight" && i.textContent === "ALT") {
+      i.classList.add("code");
+    }
+    if (k.code === "ArrowUp" && i.textContent === "↑") {
+      i.classList.add("code");
+    }
+    if (k.code === "ArrowDown" && i.textContent === "↓") {
+      i.classList.add("code");
+    }
+    if (k.code === "ArrowLeft" && i.textContent === "←") {
+      i.classList.add("code");
+    }
+    if (k.code === "ArrowRight" && i.textContent === "→") {
+      i.classList.add("code");
+    }
+    if (k.code === "Delete" && i.textContent === "DEL") {
+      i.classList.add("code");
+    }
+  }
+  for (const i of numbers) {
+    if (k.code === `Digit${i.textContent}`) {
+      i.classList.add("code");
+    }
+    if (k.code === "Backquote" && i.textContent === "`") {
+      i.classList.add("code");
+    }
+  }
+});
+
+document.addEventListener("keyup", (k) => {
+  for (const i of divs) {
+    if (k.code === `Key${i.textContent.toUpperCase()}`) {
+      i.classList.remove("code");
+    }
+    if (k.code === i.textContent) {
+      i.classList.remove("code");
+    }
+    if (k.code === "ShiftLeft" && i.textContent === "Shift") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ShiftRight" && i.textContent === "SHIFT") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ControlLeft" && i.textContent === "Ctrl") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ControlRight" && i.textContent === "CtrL") {
+      i.classList.remove("code");
+    }
+    if (k.code === "MetaLeft" && i.textContent === "Win") {
+      i.classList.remove("code");
+    }
+    if (k.code === "AltLeft" && i.textContent === "Alt") {
+      i.classList.remove("code");
+    }
+    if (k.code === "AltRight" && i.textContent === "ALT") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ArrowUp" && i.textContent === "↑") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ArrowDown" && i.textContent === "↓") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ArrowLeft" && i.textContent === "←") {
+      i.classList.remove("code");
+    }
+    if (k.code === "ArrowRight" && i.textContent === "→") {
+      i.classList.remove("code");
+    }
+    if (k.code === "Delete" && i.textContent === "DEL") {
+      i.classList.remove("code");
+    }
+  }
+  for (const i of numbers) {
+    if (k.code === `Digit${i.textContent}`) {
+      i.classList.remove("code");
+    }
+    if (k.code === "Backquote" && i.textContent === "`") {
+      i.classList.remove("code");
+    }
+  }
 });
