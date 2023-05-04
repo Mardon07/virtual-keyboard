@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  transition: all 0.2s linear;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.row {
+  width: 1008px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.row div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.key {
+  width: 60px;
+  height: 60px;
+  background: #052850;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 444;
+}
+.key:hover {
+  background: #08468d;
+}
+.key:active {
+  background: #13d133;
+}
+
+.key-area {
+  width: 1008px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  padding: 0;
+  height: 100px;
+}
+.key-black {
+  background: #090b1b;
+}
+.key-backspace {
+  background: #090b1b;
+  width: 120px;
+}
+.key-tab {
+  background: #090b1b;
+  width: 90px;
+}
+.key-del {
+  background: #090b1b;
+  width: 60px;
+  height: 60px;
+}
+.key-capslock {
+  width: 120px;
+  background: #090b1b;
+}
+.key-enter {
+  width: 120px;
+  background: #090b1b;
+}
+.key-shift {
+  width: 120px;
+  background: #090b1b;
+}
+.key-shift-right {
+  background: #090b1b;
+  width: 60px;
+  height: 60px;
+}
+.key-shift:first-child:hover,
+.key-shift-right:hover {
+  background: #08468d;
+}
+.key-ctrl {
+  background: #090b1b;
+  width: 90px;
+}
+.key-ctrl:hover {
+  background: #08468d;
+}
+.key-down {
+  background: #090b1b;
+}
+
+.row-last-key {
+  background: #090b1b;
+}
+.key-space {
+  width: 405px;
+  background: #052850;
+}
+.span-number {
+  position: relative;
+  z-index: 555;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+.span-number .active {
+  z-index: 0;
+}
+
+.span-row1 {
+  position: absolute;
+  top: 0;
+  padding-left: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: 444;
+  opacity: 0.5;
+}
+
+.code {
+  background: #2339df;
+}
+.key-shift .code {
+  background: #2339df;
+}
+.key-shift-right .code {
+  background: #2339df;
+}
